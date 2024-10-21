@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class StorageService{
-    private _storage = localStorage;
+    private _storage = sessionStorage;
 
     get<T>(key: string): T | null{
         const value = this._storage.getItem(key);

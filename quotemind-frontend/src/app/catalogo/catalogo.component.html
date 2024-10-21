@@ -1,0 +1,80 @@
+<nav class="bg-white dark:bg-gray-800 antialiased">
+  <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
+    <div class="flex items-center justify-between">
+
+      <!-- Logo -->
+    <div class="flex items-center space-x-10">
+      <div class="flex items-center space-x-0">
+        <div class="shrink-0">
+          <a routerLink="/" title="">
+            <img class="flex w-14 h-14 dark:block" src="Logo.png" alt="Logo de Quotemind"> 
+          </a>
+        </div>
+        <div>
+          <a routerLink="/" class="text-lg font-medium text-gray-900 hover:text-primary-700 dark:text-white">Quotemind</a> 
+        </div>
+      </div>
+
+        <!-- Menú principal (pantallas grandes) -->
+        
+        <ul class="inline-flex lg:flex items-center justify-start gap-6 md:gap-8 py-3 ">
+          <li><a routerLink="/" class="text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white">Home</a></li>
+          <li><a routerLink="/crud" class="text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white">CRUD</a></li>
+          <li><a routerLink="/catalogo" class="text-sm font-medium border-b-2 text-gray-900 hover:text-primary-700 dark:text-white">Catalogo</a></li>
+        </ul>
+      </div>
+
+      <!-- Dropdown de usuario y menú colapsable (pantallas pequeñas) -->
+      <div class="relative items-center lg:space-x-2">
+
+        <!-- Botón de dropdown -->
+        <button (click)="toggleDropdown()" class="inline-flex items-center rounded-lg justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm font-medium text-gray-900 dark:text-white">
+          <svg class="w-5 h-5 me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+          </svg>
+          Account
+          <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-width="2" d="m19 9-7 7-7-7"/>
+          </svg> 
+        </button>
+
+        <!-- Dropdown de usuario -->
+        <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 w-56  divide-y divide-gray-100 bg-white dark:bg-gray-700 rounded-lg shadow">
+          <ul class="p-2 text-sm text-gray-900 dark:text-white">
+            <li><a href="#" (click)="signOut()" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Sign Out</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
+    
+        <div class="container mx-auto p-6">
+          <h1 class="text-3xl font-bold text-center mb-6 dark:text-white">Recomendaciones</h1>
+        
+          <!-- Ajuste del grid para tener siempre 3 columnas ocupando todo el ancho -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div *ngFor="let book of books" class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <!-- Imagen placeholder para los libros -->
+              <img src="Libros.jpg" alt="Book cover" class="w-full h-40 object-cover">
+              
+              <!-- Contenido del libro -->
+              <div class="p-4">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">{{ book.book_details[0].title }}</h2>
+                <p class="text-gray-600 mb-4 line-clamp-3">{{ book.book_details[0].description || 'No description available.' }}</p>
+                <p class="text-gray-900 font-semibold">Author: {{ book.book_details[0].author }}</p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Botón para cargar más libros -->
+          <button (click)="loadMoreBooks()" class="mt-6 bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
+            Load More Books
+          </button>
+        </div>
+
+     
+  </section>

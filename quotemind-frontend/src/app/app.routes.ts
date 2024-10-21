@@ -13,6 +13,16 @@ export const routes: Routes = [
         loadComponent: () => import('./dashboard/dashboard.component'),
     },
     {
+        path: 'crud',
+        canActivate: [privateGuard()],
+        loadComponent: () => import('./crud/crud.component'),
+    },
+    {
+        path: 'catalogo',
+        canActivate: [privateGuard()],
+        loadComponent: () => import('./catalogo/catalogo.component'),
+    },
+    {
         path: '**',
         redirectTo: 'dashboard',
     },
