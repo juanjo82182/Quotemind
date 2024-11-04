@@ -13,10 +13,17 @@
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                         <input type="email" name="email" id="email" formControlName="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" >
+                        <div *ngIf="form.get('email')?.invalid && (form.get('email')?.touched || form.get('email')?.dirty)">
+                            <small *ngIf="form.get('email')?.errors?.['required']">El correo electrónico es obligatorio.</small>
+                            <small *ngIf="form.get('email')?.errors?.['email']">El formato del correo electrónico es inválido.</small>
+                          </div>
                     </div>
                     <div>
                         <label for="contrasena" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                         <input type="password" name="contrasena" id="contrasena" formControlName="contrasena" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                        <div *ngIf="form.get('contrasena')?.invalid && (form.get('contrasena')?.touched || form.get('contrasena')?.dirty)">
+                            <small *ngIf="form.get('contrasena')?.errors?.['required']">La contraseña es obligatoria.</small>
+                          </div>
                     </div>
                     <div class="flex items-center justify-between">
                         
