@@ -1,5 +1,5 @@
 # Quotemind
-Sistema de Gestión Personalizada de Lecturas y Reseñas
+Sistema de Gestión Personalizada de Lecturas y Reseñas(Nestjs,Angular y PostgreSQL)
 
 # 📌 Importante: 
 Este proyecto se encuentra en la rama `master`.  
